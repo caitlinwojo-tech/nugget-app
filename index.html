@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#e8853a">
+<title>nugget — is my little one getting enough?</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="name">nugget</span>
+      </div>
+      <p class="tagline">Is my little one getting enough?</p>
+    </header>
+
+    <main>
+      <section class="panel" aria-labelledby="age-h">
+        <h2 id="age-h" class="step">1 &middot; How old is your child?</h2>
+        <div id="age-band" class="segmented" role="tablist"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="food-h">
+        <h2 id="food-h" class="step">2 &middot; What have they eaten today?</h2>
+        <p class="hint">Tap everything your child has had so far (or is about to eat).</p>
+        <input id="food-search" class="search" type="search" placeholder="Search foods…" autocomplete="off" aria-label="Search foods">
+        <div id="food-picker"></div>
+      </section>
+
+      <section id="results" class="panel results" aria-live="polite" hidden></section>
+    </main>
+
+    <footer class="footer">
+      <p class="disclaimer">
+        <strong>Physician-reviewed, in testing.</strong>
+        Nutrient values are <strong>typical averages</strong> and will vary with brand, preparation, and exact portion.
+        nugget is for general guidance and is <strong>not medical advice</strong>.
+        Always follow your pediatrician&rsquo;s guidance, and prepare foods safely to avoid choking.
+      </p>
+    </footer>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- ZXing: cross-browser barcode scanning (works on iPhone, where BarcodeDetector is absent) -->
+  <script src="https://cdn.jsdelivr.net/npm/@zxing/library@0.21.3/umd/index.min.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

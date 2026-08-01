@@ -1,0 +1,169 @@
+:root{
+  --ink:#22271f; --muted:#6b7166; --line:#e7e4da; --paper:#fbfaf6;
+  --carrot:#e8853a; --carrot-d:#c96a23; --leaf:#5b8c4e;
+  --leaf-soft:#eef4ea; --carrot-soft:#fbeede; --card:#ffffff;
+  --good:#4f9a45; --ok:#d8a32a; --low:#d4683a;
+  --shadow:0 1px 3px rgba(40,35,20,.08);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+.app{max-width:560px; margin:0 auto; padding:0 16px 40px; min-height:100vh}
+
+/* Header */
+.topbar{padding:22px 4px 12px}
+.brand{display:flex; align-items:center; gap:9px}
+.brand .dot{width:24px; height:24px; border-radius:50%;
+  background:radial-gradient(circle at 32% 30%, #f3a766, var(--carrot))}
+.brand .name{font-size:23px; font-weight:800; letter-spacing:-.4px}
+.tagline{margin:4px 0 0 33px; color:var(--muted); font-size:14px}
+
+/* Panels */
+.panel{background:var(--card); border:1px solid var(--line); border-radius:16px;
+  padding:16px; margin-top:14px; box-shadow:var(--shadow)}
+.step{font-size:13px; text-transform:uppercase; letter-spacing:.8px; color:var(--leaf);
+  margin:0 0 12px; font-weight:700}
+.hint{margin:-6px 0 12px; color:var(--muted); font-size:14px}
+
+/* Age segmented control */
+.segmented{display:flex; gap:8px}
+.segmented button{flex:1; padding:12px 6px; border:1.5px solid var(--line); background:#fff;
+  border-radius:12px; font-size:15px; font-weight:600; color:var(--ink); cursor:pointer;
+  transition:.12s}
+.segmented button[aria-selected="true"]{background:var(--carrot); border-color:var(--carrot);
+  color:#fff; box-shadow:var(--shadow)}
+
+/* Search */
+.search{width:100%; padding:11px 14px; border:1.5px solid var(--line); border-radius:12px;
+  font-size:16px; margin-bottom:14px; background:#fff}
+.search:focus{outline:none; border-color:var(--carrot)}
+
+/* Food picker */
+.group-title{font-size:12px; text-transform:uppercase; letter-spacing:.6px; color:var(--muted);
+  margin:14px 2px 8px; font-weight:700}
+.group:first-child .group-title{margin-top:0}
+.chips{display:flex; flex-wrap:wrap; gap:8px}
+.chip{display:inline-flex; align-items:center; gap:7px; padding:9px 13px 9px 11px;
+  border:1.5px solid var(--line); background:#fff; border-radius:999px; cursor:pointer;
+  font-size:14.5px; line-height:1; transition:.12s; user-select:none}
+.chip .emoji{font-size:17px}
+.chip:active{transform:scale(.97)}
+.chip[aria-pressed="true"]{background:var(--leaf-soft); border-color:var(--leaf); color:#33402c;
+  font-weight:600}
+.chip[aria-pressed="true"]::after{content:"✓"; color:var(--leaf); font-weight:800; margin-left:1px}
+.no-match{color:var(--muted); font-size:14px; padding:6px 2px}
+
+/* Results */
+.results{border-color:#f0d3b3}
+.results.empty{color:var(--muted); text-align:center; font-size:15px; padding:22px 16px}
+.summary{display:flex; gap:11px; align-items:flex-start; margin:2px 0 6px}
+.summary .icon{font-size:22px; line-height:1.2}
+.summary p{margin:0; font-size:15.5px}
+.eaten-line{color:var(--muted); font-size:13px; margin:0 0 14px}
+
+.bars{margin:6px 0 4px}
+.bar-row{margin:11px 0}
+.bar-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px}
+.bar-name{font-weight:600; font-size:14.5px}
+.bar-name .hero-tag{font-size:10.5px; font-weight:700; color:var(--carrot-d);
+  background:var(--carrot-soft); padding:2px 6px; border-radius:6px; margin-left:6px;
+  text-transform:uppercase; letter-spacing:.4px; vertical-align:middle}
+.bar-val{font-size:13px; color:var(--muted)}
+.bar-track{height:9px; background:#efece3; border-radius:999px; overflow:hidden}
+.bar-fill{height:100%; border-radius:999px; transition:width .35s ease}
+.bar-fill.good{background:var(--good)}
+.bar-fill.ok{background:var(--ok)}
+.bar-fill.low{background:var(--low)}
+
+/* Suggestions */
+.suggest{margin-top:16px; background:var(--leaf-soft); border:1px solid #d4e5cd;
+  border-radius:12px; padding:13px 15px}
+.suggest h3{margin:0 0 8px; font-size:13px; text-transform:uppercase; letter-spacing:.6px; color:#3f6a36}
+.suggest ul{margin:0; padding-left:2px; list-style:none}
+.suggest li{display:flex; align-items:center; gap:9px; padding:5px 0; font-size:15px}
+.suggest li .emoji{font-size:19px}
+.suggest li .why{color:var(--muted); font-size:13px}
+.tip{margin-top:10px; font-size:13.5px; color:#3f6a36; background:#fff; border-radius:9px;
+  padding:9px 11px; border:1px dashed #cfe0c7}
+.allergen-note{margin-top:12px; font-size:12.5px; color:var(--carrot-d)}
+
+/* Add packaged food buttons */
+.add-row{display:flex; gap:10px; margin-top:16px}
+.add-custom{flex:1; padding:12px; border:1.5px dashed var(--line);
+  background:#fff; border-radius:12px; color:var(--carrot-d); font-size:14.5px; font-weight:600; cursor:pointer}
+.add-custom.scan{border-style:solid; border-color:var(--carrot); background:var(--carrot-soft)}
+.add-custom:active{transform:scale(.99)}
+
+/* Barcode scanner */
+.bc-video{width:100%; max-height:280px; background:#000; border-radius:12px; margin-bottom:10px; object-fit:cover}
+
+/* Serving flag on the confirm card */
+.cf-serving-wrap .cf-serving-flag{color:var(--carrot-d); font-weight:600; font-size:11.5px;
+  background:var(--carrot-soft); padding:2px 7px; border-radius:6px; margin-left:6px}
+
+/* Community (shared) food markers */
+.chip-unverified{font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.3px;
+  color:#8a6d3b; background:#fdf3e2; border:1px solid #ecd9b5; padding:1px 5px; border-radius:6px; vertical-align:middle}
+.report-btn{border:none; background:transparent; color:var(--muted); cursor:pointer; font-size:13px; padding:0 2px; margin-left:4px}
+.report-btn:disabled{color:var(--leaf); cursor:default}
+
+/* Today's plate (editable servings) */
+.plate{margin:0 0 4px}
+.plate h3{margin:0 0 8px; font-size:13px; text-transform:uppercase; letter-spacing:.6px; color:var(--leaf)}
+.plate ul{margin:0 0 6px; padding:0; list-style:none}
+.plate li{display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid #f0ede4}
+.plate li:last-child{border-bottom:none}
+.plate .pf{flex:1 1 auto; font-weight:600; font-size:14.5px; min-width:0}
+.plate .pf .emoji{margin-right:6px}
+.plate .pserv{flex:0 0 auto; color:var(--muted); font-size:12px; text-align:right; max-width:35%}
+.stepper{flex:0 0 auto; display:inline-flex; align-items:center; gap:0; border:1.5px solid var(--line); border-radius:999px; overflow:hidden}
+.qbtn{width:32px; height:32px; border:none; background:#fff; font-size:18px; line-height:1; color:var(--carrot-d); cursor:pointer}
+.qbtn:active{background:var(--carrot-soft)}
+input.qv{width:46px; text-align:center; font-weight:700; font-size:15px; border:none; background:transparent;
+  -moz-appearance:textfield; padding:6px 0; color:var(--ink)}
+input.qv::-webkit-outer-spin-button, input.qv::-webkit-inner-spin-button{-webkit-appearance:none; margin:0}
+input.qv:focus{outline:none; background:var(--carrot-soft); border-radius:6px}
+
+/* Modal (custom food) */
+.modal-overlay{position:fixed; inset:0; background:rgba(30,25,15,.45); display:flex; align-items:flex-end;
+  justify-content:center; z-index:50; padding:0}
+.modal{background:#fff; width:100%; max-width:560px; max-height:92vh; overflow-y:auto;
+  border-radius:18px 18px 0 0; padding:20px 18px calc(20px + env(safe-area-inset-bottom))}
+.modal h2{margin:0 0 6px; font-size:20px}
+.cf-hint{margin:0 0 14px; font-size:13px; color:var(--muted)}
+.cf-txt{display:block; font-size:13px; color:var(--muted); margin-bottom:10px}
+.cf-txt input{display:block; width:100%; margin-top:4px; padding:10px 12px; border:1.5px solid var(--line); border-radius:10px; font-size:16px}
+.cf-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px 12px; margin:6px 0 16px}
+.cf-num{font-size:12.5px; color:var(--muted); display:flex; flex-direction:column; gap:3px}
+.cf-num input{padding:9px 10px; border:1.5px solid var(--line); border-radius:9px; font-size:15px}
+.cf-actions{display:flex; gap:10px; justify-content:flex-end}
+.cf-actions .act{padding:11px 18px; border-radius:10px; font-size:14.5px; font-weight:700; cursor:pointer}
+.cf-actions .primary{background:var(--carrot); color:#fff; border:none}
+.cf-actions .ghost{background:#fff; border:1.5px solid var(--line); color:var(--ink)}
+@media (min-width:520px){ .modal-overlay{align-items:center} .modal{border-radius:18px} }
+
+/* Prep / choking cautions */
+.chip-warn{font-size:12px; margin-left:1px}
+.cautions{margin-top:14px; background:#fff5ec; border:1px solid #f3d3b3; border-radius:12px; padding:12px 15px}
+.cautions h3{margin:0 0 6px; font-size:13px; text-transform:uppercase; letter-spacing:.6px; color:var(--carrot-d)}
+.cautions ul{margin:0; padding-left:2px; list-style:none}
+.cautions li{padding:4px 0; font-size:14px; line-height:1.45}
+.cautions li .emoji{font-size:16px}
+
+/* Energy & macros */
+.macros{margin-top:16px; border:1px solid var(--line); border-radius:12px; padding:6px 15px 13px; background:#fdfcf9}
+.macros h3{margin:10px 0 4px; font-size:13px; text-transform:uppercase; letter-spacing:.6px; color:var(--muted)}
+.macro-row{display:flex; justify-content:space-between; gap:12px; padding:8px 0; font-size:14.5px; border-top:1px solid #f0ede4}
+.macro-row .ml{font-weight:600; flex:0 0 auto}
+.macro-row .mv{color:var(--ink); text-align:right}
+.macro-row .mv .dim{color:var(--muted)}
+.macro-row .mv .in{color:var(--good); font-weight:700}
+.macro-row .mv .out{color:var(--ok); font-weight:700}
+.macro-note{margin:9px 0 2px; font-size:12px; color:var(--muted)}
+
+/* Footer */
+.footer{margin-top:22px; padding:0 4px}
+.disclaimer{font-size:12px; color:var(--muted); line-height:1.5; text-align:center}
